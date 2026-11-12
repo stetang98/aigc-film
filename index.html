@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>影像作品集 · AIGC 视频</title>
+<meta name="description" content="AIGC 视频作品集：国风短剧、品牌广告、剧情短片。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f1ebdd; --paper-2:#ebe3d2; --ink:#1d1b18; --ink-2:#4a453d; --ink-3:#8a8273;
+  --red:#9c2b22; --gold:#9a7b3f; --line:#cdbfa6; --night:#141d21;
+  --serif:"Noto Serif SC","Songti SC","STSong","Source Han Serif SC","SimSun",serif;
+  --w:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img,video,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(var(--w),100% - 64px);margin-inline:auto}
+
+/* 顶栏 */
+.top{display:flex;align-items:center;gap:28px;padding:26px 0 18px}
+.seal{width:44px;height:44px;flex:none}
+.top .rule{flex:1;height:1px;background:var(--red);opacity:.75;max-width:52%}
+.nav{margin-left:auto;display:flex;gap:44px;font-size:15px;letter-spacing:.32em;font-weight:500}
+.nav a{position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:.32em;bottom:-2px;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+
+/* 首屏 */
+.hero{position:relative;display:grid;grid-template-columns:minmax(250px,26%) 1fr;min-height:430px;margin-top:6px}
+.hero-text{position:relative;z-index:3;display:flex;gap:26px;padding-top:26px}
+.hero h1{white-space:nowrap;font-size:clamp(44px,5.3vw,72px);font-weight:900;line-height:1.14;letter-spacing:.04em}
+.hero .sub{writing-mode:vertical-rl;font-size:14px;letter-spacing:.42em;color:var(--ink-2);border-left:1px solid var(--red);padding-left:12px;height:max-content;margin-top:10px;white-space:nowrap}
+.hero-pic{position:relative;z-index:1;margin-left:-70px;margin-right:calc((100vw - min(var(--w),100vw - 64px))/-2)}
+.hero-pic svg{width:100%;height:100%;min-height:430px}
+.mtn{position:absolute;z-index:2;left:calc((100vw - min(var(--w),100vw - 64px))/-2);bottom:-96px;width:min(600px,54vw);pointer-events:none;mix-blend-mode:multiply;opacity:.8}
+
+/* 数字 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);padding:58px 0 46px;border-bottom:1px solid var(--line);position:relative;z-index:3}
+.stat{text-align:center;position:relative}
+.stat+.stat::before{content:"";position:absolute;left:0;top:14%;height:72%;width:1px;background:var(--red);opacity:.7}
+.stat b{display:block;font-size:clamp(34px,4.6vw,58px);font-weight:700;color:var(--gold);line-height:1.1;letter-spacing:.02em}
+.stat b small{font-size:.5em;margin-left:.1em}
+.stat span{font-size:15px;letter-spacing:.3em;color:var(--ink-2)}
+
+/* 小节标题 */
+.sec{padding-top:44px}
+.sec-h{display:flex;align-items:center;gap:26px;margin-bottom:42px}
+.sec-h h2{font-size:clamp(34px,4.2vw,52px);font-weight:900;letter-spacing:.14em;line-height:1}
+.sec-h i{flex:1;height:1px;background:var(--red);opacity:.8}
+
+/* 作品 */
+.work{display:grid;grid-template-columns:1fr 1.55fr;gap:44px;align-items:center;margin-bottom:34px}
+.work:nth-child(odd){grid-template-columns:1.55fr 1fr}
+.work:nth-child(odd) .cover{order:-1}
+.info{display:grid;grid-template-columns:auto 1fr;column-gap:22px}
+.num{font-size:40px;font-weight:700;color:var(--red);line-height:1.2;padding-right:22px;border-right:1px solid var(--red)}
+.info h3{font-size:clamp(24px,2.6vw,32px);font-weight:900;letter-spacing:.1em;line-height:1.3}
+.info .meta{font-size:13px;letter-spacing:.18em;color:var(--red);margin-top:4px}
+.info p{grid-column:2;font-size:15.5px;color:var(--ink-2);margin-top:12px;max-width:26em}
+.info dl{grid-column:2;margin-top:12px;font-size:13.5px;color:var(--ink-2)}
+.info dl div{display:flex;gap:12px}
+.info dt{flex:none;color:var(--ink-3);letter-spacing:.2em}
+.tags{grid-column:2;margin-top:14px;font-size:12.5px;letter-spacing:.22em;color:var(--ink-3)}
+.cover{position:relative;display:block;width:100%;aspect-ratio:3/1;overflow:hidden;background:#111;box-shadow:0 14px 34px -18px rgba(40,28,10,.55)}
+.cover img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s;filter:saturate(.92)}
+.cover:hover img,.cover:focus-visible img{transform:scale(1.045);filter:saturate(1.05)}
+.cover .play{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;background:rgba(241,235,221,.9);display:grid;place-items:center;transition:transform .35s,background .35s}
+.cover .play::before{content:"";border-left:15px solid var(--ink);border-block:9px solid transparent;margin-left:5px;transition:border-color .35s}
+.cover:hover .play,.cover:focus-visible .play{transform:scale(1.1);background:var(--red)}
+.cover:hover .play::before,.cover:focus-visible .play::before{border-left-color:var(--paper)}
+.cover .len{position:absolute;right:14px;bottom:10px;font-size:12px;letter-spacing:.16em;color:#f1ebdd;text-shadow:0 1px 6px #000}
+.cover:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+
+/* 工序 */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);position:relative;padding:8px 0 20px}
+.steps::before{content:"";position:absolute;left:8.33%;right:8.33%;top:15px;height:1px;background:var(--gold)}
+.steps li{text-align:center;position:relative;padding:0 8px}
+.steps li::before{content:"";display:block;width:15px;height:15px;border-radius:50%;border:2px solid var(--gold);background:var(--paper);margin:8px auto 18px;position:relative;transition:background .3s}
+.steps li:hover::before{background:var(--red);border-color:var(--red)}
+.steps b{display:block;font-size:22px;font-weight:700;letter-spacing:.3em;text-indent:.3em}
+.steps span{display:block;font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.7}
+
+/* 关于 */
+.about{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;padding-bottom:70px}
+.about p{font-size:16.5px;color:var(--ink-2);margin-bottom:14px;max-width:32em}
+.about p strong{color:var(--ink);font-weight:700}
+.about h4{font-size:13px;letter-spacing:.3em;color:var(--red);font-weight:500;margin-bottom:12px}
+.about ul{list-style:none;font-size:15px;color:var(--ink-2)}
+.about li{padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:18px}
+.about li em{font-style:normal;flex:none;width:4.6em;color:var(--ink);letter-spacing:.16em}
+
+/* 页脚 */
+.foot{position:relative;background:var(--night) url(assets/foot.jpg) center bottom/cover no-repeat;color:#e9e1cf;margin-top:30px}
+.foot::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,29,33,.75),rgba(20,29,33,.15) 60%,rgba(20,29,33,0))}
+.foot .wrap{position:relative;display:flex;align-items:center;gap:40px;padding:62px 0 96px}
+.foot h2{writing-mode:vertical-rl;font-size:clamp(34px,4vw,46px);font-weight:700;letter-spacing:.2em;line-height:1.1}
+.foot .c{border-left:1px solid rgba(233,225,207,.45);padding-left:34px;font-size:17px;letter-spacing:.08em;line-height:2.1}
+.foot .c a{border-bottom:1px solid rgba(233,225,207,.35);transition:border-color .3s,color .3s}
+.foot .c a:hover{color:#fff;border-color:var(--red)}
+.foot .c small{display:block;font-size:13px;color:#a9a595;letter-spacing:.2em;margin-top:6px}
+.foot .seal{margin-top:14px;width:40px;height:40px}
+.copy{position:absolute;right:0;bottom:22px;font-size:12px;letter-spacing:.2em;color:#8d8a7c}
+
+/* 播放层 */
+dialog{border:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100dvh;padding:0;margin:0}
+dialog::backdrop{background:rgba(14,13,11,.93)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:56px 24px 40px}
+.stage video{max-width:min(1280px,100%);max-height:100%;background:#000;outline:0}
+.x{position:fixed;top:16px;right:22px;font-size:15px;letter-spacing:.3em;color:#e9e1cf;padding:8px 6px;border-bottom:1px solid var(--red)}
+.cap{position:fixed;left:26px;top:22px;font-size:14px;letter-spacing:.26em;color:#a9a595}
+
+/* 入场 */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:860px){
+  .wrap{width:calc(100% - 36px)}
+  .nav{gap:20px;font-size:13.5px;letter-spacing:.2em}
+  .top .rule{display:none}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-text{padding-top:10px;flex-direction:column;gap:12px}
+  .hero .sub{writing-mode:horizontal-tb;border-left:0;border-top:1px solid var(--red);padding:10px 0 0;margin:0;letter-spacing:.3em;font-size:13px}
+  .hero-pic{margin:18px -18px 0}
+  .hero-pic svg{min-height:0;aspect-ratio:16/10}
+  .mtn{left:-18px;bottom:-60px;width:64vw}
+  .stats{padding:44px 0 30px}
+  .stat span{font-size:12px;letter-spacing:.12em}
+  .work,.work:nth-child(odd){grid-template-columns:1fr;gap:18px;margin-bottom:46px}
+  .work .cover{order:-1;aspect-ratio:16/9}
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:26px}
+  .steps::before{display:none}
+  .about{grid-template-columns:1fr;gap:34px}
+  .foot .wrap{gap:24px;padding:48px 0 90px}
+  .foot .c{padding-left:22px;font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
+    <symbol id="seal" viewBox="0 0 48 48">
+      <g filter="url(#rough)">
+        <rect x="3" y="3" width="42" height="42" rx="3" fill="#9c2b22"/>
+        <rect x="7.5" y="7.5" width="33" height="33" fill="none" stroke="#f1ebdd" stroke-width="1.2" opacity=".85"/>
+        <text x="24" y="33.5" text-anchor="middle" font-size="25" font-weight="900" fill="#f1ebdd" font-family="'Noto Serif SC','Songti SC',serif">影</text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="wrap top" id="top">
+  <a href="#top" aria-label="回到顶部"><svg class="seal"><use href="#seal"/></svg></a>
+  <span class="rule"></span>
+  <nav class="nav" aria-label="页面导航">
+    <a href="#works">作品</a><a href="#process">工序</a><a href="#about">关于</a><a href="#contact">联系</a>
+  </nav>
+</header>
+
+<main>
+<section class="wrap hero">
+  <div class="hero-text rv">
+    <h1>影像<br>作品集</h1>
+    <p class="sub">AIGC 视频 · 短剧 · 品牌广告</p>
+  </div>
+  <div class="hero-pic rv">
+    <svg viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" role="img" aria-label="国风短剧《一枝春》剧照：园林里穿海棠刺绣连衣裙的女子">
+      <defs>
+        <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency=".011 .016" numOctaves="4" seed="11" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="95" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="13"/>
+        </filter>
+        <mask id="m"><g filter="url(#ink)"><rect x="170" y="62" width="1560" height="610" fill="#fff"/></g></mask>
+      </defs>
+      <image href="assets/hero.jpg" x="0" y="-40" width="1600" height="900" preserveAspectRatio="xMidYMid slice" mask="url(#m)"/>
+    </svg>
+  </div>
+  <img class="mtn" src="assets/ink_mtn.webp" alt="" width="1400" height="788">
+</section>
+
+<section class="wrap stats rv" aria-label="数据">
+  <div class="stat"><b>290<small>万</small></b><span>单条最高播放</span></div>
+  <div class="stat"><b>4<small>分</small>39<small>秒</small></b><span>最长单集成片</span></div>
+  <div class="stat"><b>6<small>道</small></b><span>工序一人完成</span></div>
+</section>
+
+<section class="wrap sec" id="works">
+  <div class="sec-h rv"><h2>作品</h2><i></i></div>
+
+  <article class="work rv">
+    <div class="info">
+      <span class="num">壹</span>
+      <div><h3>一枝春</h3><div class="meta">国风品牌短剧 · 原创概念样片</div></div>
+      <p>新品发布前夜，她的样衣被人剪破；她用外婆教的苏绣，把破口绣成一枝海棠。为女装品牌写的短剧：裙子就是剧情，结尾留钩子。</p>
+      <dl>
+        <div><dt>我做</dt><dd>剧本、人物场景道具资产、首帧、逐镜提示词、生成、剪辑</dd></div>
+        <div><dt>方法</dt><dd>四场戏各出首帧并行生成，音色从成片截取接戏</dd></div>
+      </dl>
+      <div class="tags">国风 / 品牌短剧 / 原创剧本 / Seedance 2.5</div>
+    </div>
+    <button class="cover" data-src="assets/yizhichun.mp4" data-title="壹 · 一枝春" aria-label="播放《一枝春》">
+      <img src="assets/p_yizhichun.jpg" alt="深夜的设计工作室，人台上的藕粉色连衣裙被剪开一道口子" loading="lazy"><span class="play"></span><span class="len">01:34 · 16:9</span>
+    </button>
+  </article>
+
+  <article class="work rv">
+    <div class="info">
+      <span class="num">贰</span>
+      <div><h3>转身，就是海</h3><div class="meta">品牌广告 · 概念样片</div></div>
+      <p>为一把休闲转椅写的生活化故事：纱帘、海光、毛衣的手感。用材质特写和自然光讲产品，不靠口号。</p>
+      <dl>
+        <div><dt>我做</dt><dd>故事分镜、人物与产品参考、生成、剪辑声音字幕</dd></div>
+        <div><dt>方法</dt><dd>锁人椅比例与产品轮廓，逐镜修形变和反光</dd></div>
+      </dl>
+      <div class="tags">品牌广告 / 家居 / 真人写实 / AIGC</div>
+    </div>
+    <button class="cover" data-src="assets/chair.mp4" data-title="贰 · 转身，就是海" aria-label="播放《转身，就是海》">
+      <img src="assets/p_chair.jpg" alt="海景窗前的米色休闲转椅" loading="lazy"><span class="play"></span><span class="len">00:32 · 16:9</span>
+    </button>
+  </article>
+
+  <article class="work rv">
+    <div class="info">
+      <span class="num">叁</span>
+      <div><h3>异世界 Vlog · 古堡篇</h3><div class="meta">剧情短片 · 第二集完整成片</div></div>
+      <p>第一人称穿过地下水域与古堡，串起多场人物对手戏。从片头到结尾一整集，考的是长片里人物、空间和声音的连续。</p>
+      <dl>
+        <div><dt>我做</dt><dd>人物场景资产、逐镜提示词、生成、剪辑、分段配乐、字幕</dd></div>
+        <div><dt>方法</dt><dd>定妆图锁方向，尾帧接首帧，台词按字数估时长</dd></div>
+      </dl>
+      <div class="tags">剧情短片 / 奇幻 / 21:9 / 第一人称</div>
+    </div>
+    <button class="cover" data-src="assets/gubao.mp4" data-title="叁 · 异世界 Vlog · 古堡篇" aria-label="播放《异世界 Vlog · 古堡篇》">
+      <img src="assets/p_gubao.jpg" alt="银发人鱼少女的特写" loading="lazy"><span class="play"></span><span class="len">04:39 · 21:9</span>
+    </button>
+  </article>
+
+  <article class="work rv">
+    <div class="info">
+      <span class="num">肆</span>
+      <div><h3>偷吃西瓜装睡</h3><div class="meta">萌宠剧情 · TikTok</div></div>
+      <p>偷吃、装睡、揭晓，十五秒讲完一个小反转。同系列账号作品单条最高播放 290 万，另有一条 210 万。</p>
+      <dl>
+        <div><dt>我做</dt><dd>选题脚本、角色资产、提示词、生成、剪辑</dd></div>
+        <div><dt>方法</dt><dd>开场三秒给冲突，动作顺序写死，结尾留反应</dd></div>
+      </dl>
+      <div class="tags">短视频 / 萌宠 / 9:16 / 海外投放</div>
+    </div>
+    <button class="cover" data-src="assets/pet.mp4" data-title="肆 · 偷吃西瓜装睡" aria-label="播放《偷吃西瓜装睡》">
+      <img src="assets/p_pet.jpg" alt="床上的婴儿和小猫" loading="lazy" style="object-position:50% 46%"><span class="play"></span><span class="len">00:15 · 9:16</span>
+    </button>
+  </article>
+</section>
+
+<section class="wrap sec" id="process">
+  <div class="sec-h rv"><h2>工序</h2><i></i></div>
+  <ol class="steps rv">
+    <li><b>立意</b><span>读本定调<br>拆节拍与情绪</span></li>
+    <li><b>定妆</b><span>人物、场景、道具<br>先把脸和空间锁住</span></li>
+    <li><b>分镜</b><span>逐镜写提示词<br>每秒画面与声音</span></li>
+    <li><b>生成</b><span>首尾帧接戏<br>逐条检查再补拍</span></li>
+    <li><b>剪辑</b><span>挑条、对点<br>节奏不赶不拖</span></li>
+    <li><b>配乐</b><span>分段配乐与音效<br>字幕压制出片</span></li>
+  </ol>
+</section>
+
+<section class="wrap sec" id="about">
+  <div class="sec-h rv"><h2>关于</h2><i></i></div>
+  <div class="about rv">
+    <div>
+      <p>我做 AIGC 视频：<strong>拿到脚本，独立交出成片。</strong>人物与场景资产、分镜提示词、生成、剪辑、配乐、字幕，一条线自己走完。</p>
+      <p>数据分析出身，习惯把手艺拆成流程。常用的写法和检查步骤都沉淀成了可复用的工作流，换一个题材、换一个品牌，也能稳定出片。</p>
+      <p>偏爱国风与写实质感，在意镜头之间的呼吸。</p>
+    </div>
+    <div>
+      <h4>常用工具</h4>
+      <ul>
+        <li><em>出图</em>GPT Image · Midjourney · Seedream</li>
+        <li><em>出片</em>Seedance 2.5 · 万相 3.0</li>
+        <li><em>声音</em>ElevenLabs · 分段配乐</li>
+        <li><em>剪辑</em>剪映 · Final Cut · ffmpeg</li>
+        <li><em>工作流</em>Claude Code · Codex 自制技能</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <h2>静候来信</h2>
+    <div class="c">
+      邮箱：<a href="mailto:stetang1998@gmail.com">stetang1998@gmail.com</a><br>
+      合作：短漫剧 · 短视频 · 品牌商业内容
+      <small>远程 · 兼职或全职 · 简历与完整成片可另发</small>
+      <svg class="seal"><use href="#seal"/></svg>
+    </div>
+    <span class="copy">AIGC 影像作品集 · 2026</span>
+  </div>
+</footer>
+
+<dialog id="player" aria-label="视频播放">
+  <span class="cap" id="cap"></span>
+  <button class="x" id="close">关闭</button>
+  <div class="stage"><video id="v" controls playsinline preload="none"></video></div>
+</dialog>
+
+<script>
+const dlg=document.getElementById('player'),v=document.getElementById('v'),cap=document.getElementById('cap');
+document.querySelectorAll('.cover').forEach(b=>b.addEventListener('click',()=>{
+  v.src=b.dataset.src;v.poster=b.querySelector('img').src;cap.textContent=b.dataset.title;
+  dlg.showModal();v.play().catch(()=>{});
+}));
+const shut=()=>{v.pause();v.removeAttribute('src');v.load();if(dlg.open)dlg.close()};
+document.getElementById('close').addEventListener('click',shut);
+dlg.addEventListener('cancel',e=>{e.preventDefault();shut()});
+dlg.addEventListener('click',e=>{if(e.target===dlg||e.target.classList.contains('stage'))shut()});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i<3?i*120:0)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
